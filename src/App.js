@@ -1,11 +1,12 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Home from "./Home";
-import Login from "./Login";
-import SignUp from "./SignUp";
+import Home from "./Pages/Home/Home";
+import About from "./Pages/About/About";
+import Login from "./Pages/Login/Login";
+import SignUp from "./Pages/SignUp/SignUp";
 import { AuthProvider } from "./Auth";
-import PrivateRoute from "./PrivateRoute";
+import PrivateRoute from "./Routes/PrivateRoute";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <PrivateRoute exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/about" component={About} />
         </div>
       </Router>
     </AuthProvider>
