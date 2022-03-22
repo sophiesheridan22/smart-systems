@@ -15,20 +15,22 @@ import MenuItem from "@mui/material/MenuItem";
 const Header = ({ history }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const currentUser = app.auth().currentUser.email;
-  const pages = ['Home', 'About'];
+  const pages = ['Store', 'About', 'Dashboard'];
 
   const handleNav = (page) => {
     switch(page) {
-        case 'Home':
+        case 'Store':
             history.push('/');
             break;
         case 'About':
             history.push('/about');
             break;
+        case 'Dashboard':
+          history.push('/dashboard');
+          break;
         default:
             break;
     }
-    //history.push(`/${page.toLowerCase()}`);
   };
 
   const handleClose = () => {
@@ -49,7 +51,7 @@ const Header = ({ history }) => {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Sheridan Smart Systems
+            Legend Lighting
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
@@ -57,6 +59,7 @@ const Header = ({ history }) => {
                 key={page}
                 onClick={() => {handleNav(page)}}
                 sx={{ my: 2, color: 'white', display: 'block' }}
+                disabled={page === "Dashboard"}
               >
                 {page}
               </Button>
